@@ -371,8 +371,8 @@ module.exports = exported;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\MEAN stack app\copy 01\front\src\styles.css */"./src/styles.css");
-module.exports = __webpack_require__(/*! F:\MEAN stack app\copy 01\front\node_modules\@angular\material\prebuilt-themes\indigo-pink.css */"./node_modules/@angular/material/prebuilt-themes/indigo-pink.css");
+__webpack_require__(/*! F:\MEAN stack app\homeproject\Angular9\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! F:\MEAN stack app\homeproject\Angular9\node_modules\@angular\material\prebuilt-themes\indigo-pink.css */"./node_modules/@angular/material/prebuilt-themes/indigo-pink.css");
 
 
 /***/ })

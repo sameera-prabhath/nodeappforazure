@@ -12,8 +12,10 @@ const port = process.env.PORT ||3000;
 const rtsIndex = require('./routes/index.route');
 const rtsPost = require('./routes/post.route');
 
-var app = express();
+const passport = require('passport');
 
+
+var app = express();
 
 var corsOptions = {
   credentials: true, origin: true
@@ -21,17 +23,18 @@ var corsOptions = {
 }
 
 
-
+//for angular dist
 app.use('/', express.static(__dirname + '/dist/Angular9')); 
+
+
+app.use(passport.initialize());
+// app.use(passport.session());
 
 
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use('/api', rtsIndex);
 app.use('/api', rtsPost);
-
-
-
 
 app.use((err, req, res, next) => {
   if (err.name === 'ValidationError') {
@@ -44,11 +47,11 @@ app.use((err, req, res, next) => {
   }
 });
 
-
+//for angular dist
 app.use('/*',function(req, res) {
   res.sendfile(__dirname + '/dist/Angular9/index.html');
 });
-  
+
 app.listen(port, ()=>{
     console.log("server is running on port: "+port);
   }); 
