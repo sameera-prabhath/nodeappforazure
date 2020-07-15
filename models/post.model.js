@@ -14,6 +14,11 @@ var postSchema = new mongoose.Schema({
         type: String,
         required: ' can\'t be empty',
         
+    },
+    ownername: {
+        type: String,
+        required: ' can\'t be empty',
+        
     }
 
 

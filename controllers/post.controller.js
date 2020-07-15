@@ -1,23 +1,37 @@
 const mongoose = require('mongoose');
 const Post = mongoose.model('Post');
-
+const User = mongoose.model('User');
 
 module.exports.addpost = (req, res, next) => {
-    var post = new Post();
-    post.topic = req.body.topic;
-    post.postbody = req.body.postbody;
-    post.ownerid = req._id;
 
-    post.save((err, doc) => {
-        if (!err)
-            res.send(doc);
-        else {
-
+    User.findById(req._id, (err, user) => {
+        if (err)
             console.log(err);
+        else{
+            console.log("Post Body ....."+ req.body.postbody);
+
+            var post = new Post();
+            post.topic = req.body.topic;
+            post.postbody = req.body.postbody;
+            post.ownerid = req._id;
+            post.ownername = user.fullName;
+            post.save((err, doc) => {
+                if (!err)
+                    res.send(doc);
+                else {
+        
+                    console.log(err);
+        
+                }
+        
+            });
 
         }
-
+            
     });
+
+
+
 } 
 
 module.exports.findPostById = (req, res) => {

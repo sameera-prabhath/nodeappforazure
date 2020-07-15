@@ -14,6 +14,8 @@ router.get('/userlist', ctrlUser.findUser);
 router.get('/user/:id', ctrlUser.findUserById);
 router.delete('/user/delete/:id', ctrlUser.deleteUser);
 
+router.get('/getuserforothers/:id', ctrlUser.getuserforothers);
+
 // router.get('/googlelll',ctrlUser.googlelogin);
 // router.get('/google/callback',ctrlUser.googleredct);
 

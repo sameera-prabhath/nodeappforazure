@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const passport = require('passport');
 const User = mongoose.model('User');
+const Post = mongoose.model('Post');
 const _ = require('lodash');
 
 
@@ -103,4 +104,30 @@ module.exports.userProfile = (req, res, next) => {
                     res.json(user);
             });
         }
+
+
+        module.exports.getuserforothers = (req, res) => {
+
+            User.findById(req.params.id, (err, user) => {
+                if (err)
+                    console.log(err);
+                else{
+      
+                    Post.find({ ownerid: req.params.id },(err, posts) => {
+                        if (err)
+                            console.log(err);
+                        else{
+                            res.json({posts:posts , user:_.pick(user, ['_id', 'fullName', 'email'])});
+                        }
+                            
+                    });
+
+
+
+                }
+                    
+            });
+
+        }
         
+
