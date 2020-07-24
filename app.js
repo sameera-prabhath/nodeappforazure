@@ -33,7 +33,7 @@ app.use(passport.initialize());
 
 
 app.use(cors(corsOptions));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '50MB' } ));
 app.use('/api', rtsIndex);
 app.use('/api', rtsPost);
 

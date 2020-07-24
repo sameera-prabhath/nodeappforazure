@@ -7,8 +7,8 @@ const ctrlpost = require('../controllers/post.controller');
 
 
 router.post('/addpost', jwthelper.verifyJwtToken,   ctrlpost.addpost );
-router.get('/post/:id', jwthelper.verifyJwtToken,  ctrlpost.findPostById );
-router.get('/posts/',  ctrlpost.findPost );
+router.get('/post/:id',  ctrlpost.findPostById );
+router.get('/posts/:page',  ctrlpost.findPost );
 router.delete('/post/delete/:id',jwthelper.verifyJwtToken,  ctrlpost.deletePost);
 
 
